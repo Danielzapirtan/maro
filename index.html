@@ -47,16 +47,6 @@
         <p>For reliable information about Nicolás Maduro, consult these verified sources:</p>
         
         <h2>🌐 International News Sources</h2>
-        <a href="https://www.reuters.com/search?blob=Maduro" class="source-link" target="_blank">
-            <strong>Reuters</strong> - International news agency
-            <span class="verified">✓ Verified Source</span>
-        </a>
-        
-        <a href="https://www.bbc.com/news/topics/cp3mv1devnqt/venezuela" class="source-link" target="_blank">
-            <strong>BBC News</strong> - Venezuela coverage
-            <span class="verified">✓ Verified Source</span>
-        </a>
-        
         <a href="https://apnews.com/hub/venezuela" class="source-link" target="_blank">
             <strong>Associated Press</strong> - Venezuela news
             <span class="verified">✓ Verified Source</span>
@@ -73,25 +63,6 @@
             <span class="verified">✓ Official Source</span>
         </a>
         
-        <a href="https://www.un.org/en/about-us/member-states/venezuela" class="source-link" target="_blank">
-            <strong>United Nations</strong> - Member state info
-            <span class="verified">✓ Official Source</span>
-        </a>
-        
-        <h2>📈 Current Developments</h2>
-        <div id="live-data">
-            <p><em>Enable JavaScript to fetch live updates from trusted APIs...</em></p>
-        </div>
-        
-        <h2>⚠️ Source Verification Tips</h2>
-        <ul>
-            <li>Check multiple reputable sources</li>
-            <li>Look for primary sources and official statements</li>
-            <li>Verify dates and context of information</li>
-            <li>Avoid unverified social media claims</li>
-            <li>Check fact-checking organizations for verification</li>
-        </ul>
-        
         <div style="margin-top: 30px; padding: 15px; background: #f9f9f9; border-radius: 5px;">
             <small>This page last updated: <span id="currentDate"></span></small>
         </div>
@@ -100,27 +71,6 @@
     <script>
         document.getElementById('currentDate').textContent = new Date().toLocaleDateString();
         
-        // Simple fetch from a public API (example using Guardian Open Platform)
-        async function fetchNews() {
-            try {
-                // Note: You would need to add your own API key here
-                const response = await fetch('https://content.guardianapis.com/search?q=Maduro&api-key=TEST&show-fields=all');
-                const data = await response.json();
-                
-                if (data.response && data.response.results) {
-                    let html = '<h3>Recent Trusted Articles:</h3>';
-                    data.response.results.slice(0, 5).forEach(article => {
-                        html += `<p><a href="${article.webUrl}" target="_blank">${article.webTitle}</a></p>`;
-                    });
-                    document.getElementById('live-data').innerHTML = html;
-                }
-            } catch (error) {
-                console.log('Using fallback static information');
-            }
-        }
-        
-        // Uncomment to enable live fetching (requires API key):
-        // fetchNews();
     </script>
 </body>
 </html>
